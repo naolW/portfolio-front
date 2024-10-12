@@ -39,10 +39,11 @@ jobs:
             if [ ! -d "/var/www/portfolio-front/.git" ]; then
               git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/naolW/portfolio-front.git /var/www/portfolio-front  # Clone if not a git repo
             else
-              cd /var/www/portfolio-cms 
+              cd /var/www/portfolio-front 
               git pull origin master
             fi
             cd /var/www/portfolio-front
             yarn install
             yarn build
             pm2 start yarn --name portfolio-front -- run start
+            pm2 reload portfolio-front || pm2 start yarn --name portfolio-front -- run start
