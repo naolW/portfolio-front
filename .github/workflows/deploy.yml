@@ -35,7 +35,7 @@ jobs:
             # Load NVM and use the correct Node version
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            nvm use 20.15
+            nvm use 20.6.1
 
             # Create the directory if it doesn't exist
             if [ ! -d "/var/www/portfolio-front" ]; then
