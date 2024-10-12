@@ -25,16 +25,11 @@ jobs:
         run: yarn build
 
       - name: Deploy to VPS via SSH
-        uses: appleboy/ssh-action@v0.1.4
+        uses: appleboy/scp-action@v0.1.2
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           port: 22
-          script: |
-            # Navigate to the portfolio-front directory
-            cd /var/www/portfolio-front
-
-            # Clear existing contents in portfolio-front and copy the new build files
-            rm -rf * # Clear all existing files in portfolio-front
-            cp -r /home/runner/work/portfolio-front/portfolio-front/build/* . # Copy new build files from the GitHub Actions workspace
+          source: build/*
+          target: /var/www/portfolio-front/
