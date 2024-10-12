@@ -36,24 +36,13 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             nvm use 20.6.1
-
-            # Create the directory if it doesn't exist
-            if [ ! -d "/var/www/portfolio-front" ]; then
-              mkdir -p /var/www/portfolio-front  # Create the directory if it doesn't exist
-            fi
-
-            # Check if the project directory is a git repository
             if [ ! -d "/var/www/portfolio-front/.git" ]; then
               git clone https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/naolW/portfolio-front.git /var/www/portfolio-front  # Clone if not a git repo
+            else
+              cd /var/www/portfolio-cms 
+              git pull origin master
             fi
-
-            cd /var/www/portfolio-front  # Change to the correct directory
-            git pull origin main  # Pull latest changes
-
-            # Install dependencies and build the project
+            cd /var/www/portfolio-front
             yarn install
             yarn build
-
-            # Stop any existing pm2 process and serve the build
-            pm2 stop portfolio-front || true  # Stop any existing process
-            pm2 start serve --name portfolio-front -- -s build -l 4444
+            pm2 start yarn --name portfolio-front -- run start
