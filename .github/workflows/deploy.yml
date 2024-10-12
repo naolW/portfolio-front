@@ -1,9 +1,9 @@
-name: Deploy React Portfolio
+name: Deploy Portfolio front
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -53,4 +53,4 @@ jobs:
 
             # Stop any existing pm2 process and serve the build
             pm2 stop portfolio-front || true  # Stop any existing process
-            pm2 start serve --name portfolio-front -- -s build -l 3000  # Serve the React app on port 3000
+            pm2 start serve --name portfolio-front -- -s build -l 4444  # Serve the React app on port 4444
