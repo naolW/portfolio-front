@@ -24,15 +24,6 @@ jobs:
       - name: Build React app
         run: yarn build
 
-      - name: Check current directory
-        run: pwd # Check current working directory
-
-      - name: List root directory
-        run: ls -al / # List root contents
-
-      - name: Check workspace contents
-        run: ls -al /github/workspace
-
       - name: Deploy to VPS via SSH
         uses: appleboy/ssh-action@v0.1.4
         with:
@@ -46,4 +37,4 @@ jobs:
 
             # Clear existing contents in portfolio-front and copy the new build files
             rm -rf * # Clear all existing files in portfolio-front
-            cp -r /github/workspace/build/* . # Copy new build files from the GitHub Actions workspace
+            cp -r /home/runner/work/portfolio-front/portfolio-front/build/* . # Copy new build files from the GitHub Actions workspace
