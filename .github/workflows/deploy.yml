@@ -24,8 +24,14 @@ jobs:
       - name: Build React app
         run: yarn build
 
+      - name: Check current directory
+        run: pwd # Check current working directory
+
+      - name: List root directory
+        run: ls -al / # List root contents
+
       - name: Check workspace contents
-        run: ls -al /github/workspace # Check if build directory exists
+        run: ls -al /github/workspace
 
       - name: Deploy to VPS via SSH
         uses: appleboy/ssh-action@v0.1.4
