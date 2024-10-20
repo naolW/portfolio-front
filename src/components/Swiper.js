@@ -43,7 +43,11 @@ const SampleSwiper = () => {
     >
       {portfolios.map((item, index) => (
         <SwiperSlide key={index}>
-          <div className="card w-full h-[470px] p-5 text-white bg-gradient-to-b from-[#212121] to-[#212121] border-2 border-transparent rounded-lg flex flex-col cursor-pointer transform-gpu transition-transform duration-800 ease-out hover:rotate-[-2deg] hover:scale-105">
+          <a
+            href={`${item.Link}`}
+            target="_bank"
+            className="card w-full h-[470px] p-5 text-white bg-gradient-to-b from-[#212121] to-[#212121] border-2 border-transparent rounded-lg flex flex-col cursor-pointer transform-gpu transition-transform duration-800 ease-out hover:rotate-[-2deg] hover:scale-105"
+          >
             <div className="main-content flex-1 flex flex-col gap-3">
               <div className="header flex items-center text-[#717171] font-semibold">
                 <span className="mr-1 text-white">{item.title}</span>
@@ -67,7 +71,7 @@ const SampleSwiper = () => {
             <div className="footer text-sm leading-none text-left">
               {item.Description}
             </div>
-          </div>
+          </a>
         </SwiperSlide>
       ))}
     </Swiper>
