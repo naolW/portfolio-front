@@ -5,7 +5,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
 
 const IconLink = ({ icon, url }) => (
   <a href={url} target="_blank" rel="noopener noreferrer">
-    <img src={icon} alt="icon" className="w-10 h-10" />
+    <img src={icon} alt="icon" className="w-8 h-8 hover:scale-125" />
   </a>
 );
 
@@ -39,11 +39,15 @@ const Home = () => {
 
   return (
     <section className="px-5">
-      <div className="hero flex justify-between text-white max-w-7xl mx-auto py-10">
+      <div className="hero md:flex justify-between text-white max-w-7xl mx-auto py-5">
         <div className="left flex flex-col gap-1 items-start flex-1 text-left">
-          <h1 className="text-5xl font-medium">{content.siteName}</h1>
-          <p className="text-lg">{content.siteDescription}</p>
-          <div className="icon flex gap-2 items-center">
+          <h1 className="text-3xl md:text-5xl font-medium">
+            {content.siteName}
+          </h1>
+          <p className="text-base md:text-lg leading-tight mt-2">
+            {content.siteDescription}
+          </p>
+          <div className="icon flex gap-1.5 items-center mt-2 justify-between">
             {content.socialAddress?.map(({ icon, url }, index) => (
               <IconLink
                 key={index}
@@ -52,11 +56,11 @@ const Home = () => {
               />
             ))}
           </div>
-          <a
+          {/* <a
             className="p-[2px] mt-5 block rounded-[50px] bg-gradient-to-r from-[#ff6f4c] to-[#4454fe]"
             href=""
           >
-            <div className="group button-content px-7 py-6 flex items-center gap-3 rounded-[50px] bg-gradient-to-r from-[#693834] to-[#282c67] text-white text-base leading-none font-medium no-underline">
+            <div className="group button-content px-7 py-4 flex items-center gap-3 rounded-[50px] bg-gradient-to-r from-[#693834] to-[#282c67] text-white text-base leading-none font-medium no-underline">
               <span>Request a Website</span>
               <svg
                 fill="currentColor"
@@ -71,7 +75,7 @@ const Home = () => {
                 />
               </svg>
             </div>
-          </a>
+          </a> */}
         </div>
         <div className="right flex-1"></div>
       </div>
