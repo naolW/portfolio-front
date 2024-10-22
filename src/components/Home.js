@@ -9,6 +9,10 @@ const IconLink = ({ icon, url }) => (
   </a>
 );
 
+const IconStack = ({ icon, url }) => (
+  <img src={icon} alt="icon" className="w-6 h-6 hover:scale-125" />
+);
+
 const Home = () => {
   const [content, setContents] = useState([]);
 
@@ -23,13 +27,12 @@ const Home = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `${apiUrl}/api/global?populate=socialAddress.icon`
+        `${apiUrl}/api/global?populate=socialAddress.icon&populate=stacks`
       );
       if (!response.ok) {
         throw new Error(`Error fetching data: ${response.statusText}`);
       }
       const { data } = await response.json();
-      console.log(data);
       return data;
     } catch (error) {
       console.error("Error:", error);
@@ -54,6 +57,11 @@ const Home = () => {
                 icon={`${apiUrl}${icon.url}`}
                 url={`${url}`}
               />
+            ))}
+          </div>
+          <div className="icon flex flex-wrap gap-1 items-center mt-2 -mb-16">
+            {content.stacks?.map(({ url }, index) => (
+              <IconStack key={index} icon={`${apiUrl}${url}`} />
             ))}
           </div>
           {/* <a
