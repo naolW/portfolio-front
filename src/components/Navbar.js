@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <header className="bg-darkBlue1 opacity-75 py-4 px-5">
-      <nav className="h-10 flex justify-between max-w-7xl mx-auto items-center">
+    <header className="bg-darkBlue1 opacity-75 py-2 md:py-4 px-5">
+      <nav className="h-10 flex justify-between max-w-[1440px] mx-auto items-center">
         <div className="logo">
-          <span className="font-bold text-pretty shadow-lg text-2xl text-white">
+          <a
+            href="/"
+            className="font-bold text-pretty shadow-lg text-2xl text-white"
+          >
             Naol <span className="font-thin">.W</span>
-          </span>
+          </a>
         </div>
         {/* <div className="menu-container">
           <ul className="flex gap-10">

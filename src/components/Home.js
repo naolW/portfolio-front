@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import SampleSwiper from "./Swiper";
+import Projects from "./Projects";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
 const IconLink = ({ icon, url }) => (
   <a href={url} target="_blank" rel="noopener noreferrer">
-    <img src={icon} alt="icon" className="w-8 h-8 hover:scale-125" />
+    <img src={icon} alt="icon" className="w-7 h-7 hover:scale-125" />
   </a>
 );
 
 const IconStack = ({ icon, url }) => (
-  <img src={icon} alt="icon" className="w-6 h-6 hover:scale-125" />
+  <img src={icon} alt="icon" className="w-5 h-5 hover:scale-125" />
 );
 
 const Home = () => {
@@ -41,28 +42,30 @@ const Home = () => {
   };
 
   return (
-    <section className="px-5">
-      <div className="hero md:flex justify-between text-white max-w-7xl mx-auto py-5">
-        <div className="left flex flex-col gap-1 items-start flex-1 text-left">
-          <h1 className="text-3xl md:text-5xl font-medium">
-            {content.siteName}
-          </h1>
-          <p className="text-base md:text-lg leading-tight mt-2">
-            {content.siteDescription}
-          </p>
-          <div className="icon flex gap-1.5 items-center mt-2 justify-between">
-            {content.socialAddress?.map(({ icon, url }, index) => (
-              <IconLink
-                key={index}
-                icon={`${apiUrl}${icon.url}`}
-                url={`${url}`}
-              />
-            ))}
-          </div>
-          <div className="icon flex flex-wrap gap-1 items-center mt-2 -mb-16">
-            {content.stacks?.map(({ url }, index) => (
-              <IconStack key={index} icon={`${apiUrl}${url}`} />
-            ))}
+    <section className="px-5 xl:px-10 2xl:px-0">
+      <div className="hero xl:fixed w-full xl:left-1/2 transform xl:-translate-x-1/2 flex flex-col xl:flex-row max-w-[1440px] justify-between text-white gap-8 mx-auto py-2 md:py-5 h-full pr-2">
+        <div className="left relative flex flex-col gap-1 items-start flex-1 text-left h-screen overflow-hidden md:px-5 2xl:px-0">
+          <div className="content sticky top-0">
+            <h1 className="text-3xl md:text-5xl font-medium">
+              {content.siteName}
+            </h1>
+            <p className="text-base md:text-lg md:leading-5 mt-2">
+              {content.siteDescription}
+            </p>
+            <div className="icon flex gap-1.5 items-center mt-2 justify-between w-fit">
+              {content.socialAddress?.map(({ icon, url }, index) => (
+                <IconLink
+                  key={index}
+                  icon={`${apiUrl}${icon.url}`}
+                  url={`${url}`}
+                />
+              ))}
+            </div>
+            <div className="icon flex max-md:overflow-x-auto md:flex-wrap gap-1 items-center mt-4">
+              {content.stacks?.map(({ url }, index) => (
+                <IconStack key={index} icon={`${apiUrl}${url}`} />
+              ))}
+            </div>
           </div>
           {/* <a
             className="p-[2px] mt-5 block rounded-[50px] bg-gradient-to-r from-[#ff6f4c] to-[#4454fe]"
@@ -85,10 +88,20 @@ const Home = () => {
             </div>
           </a> */}
         </div>
-        <div className="right flex-1"></div>
-      </div>
-      <div className="max-w-7xl mx-auto">
-        <SampleSwiper />
+        {/* <div className="right flex-1"></div> */}
+        <div
+          className="max-w-full xl:max-w-3xl 2xl:max-w-4xl mx-auto xl:h-screen xl:overflow-y-auto sm:pr-3 xl:pb-32
+  [&::-webkit-scrollbar]:w-2
+  [&::-webkit-scrollbar-track]:rounded-full
+  [&::-webkit-scrollbar-track]:bg-[#4454fe]
+  [&::-webkit-scrollbar-thumb]:rounded-full
+  [&::-webkit-scrollbar-thumb]:bg-[#4454fe]
+  dark:[&::-webkit-scrollbar-track]:bg-neutral-700
+  dark:[&::-webkit-scrollbar-thumb]:bg-[#4454fe]"
+        >
+          <Projects />
+          {/* <SampleSwiper /> */}
+        </div>
       </div>
     </section>
   );
