@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 
 export default function Layout({ children }) {
   return (
-    <div className="bg-darkBlue1 h-full">
+    <div className="h-full">
       <Navbar />
       {children}
     </div>

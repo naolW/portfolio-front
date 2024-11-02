@@ -114,9 +114,7 @@ body * {
 
 /* Custom Scrollbar Styles */
 .scrollbar-custom {
-  scrollbar-width: thin; /* For Firefox */
-  scrollbar-color: #4454fe transparent; /* For Firefox */
-  border-radius: 1rem;
+  scrollbar-color: #4454fe lightgray; /* For Firefox */
 }
 
 .scrollbar-custom::-webkit-scrollbar {

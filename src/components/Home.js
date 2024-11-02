@@ -49,14 +49,14 @@ const Home = () => {
             <div className="flex items-center gap-2">
               {content.profileImage && (
                 <img
-                  src={`${apiUrl}/${content.profileImage.url}`}
+                  src={`${apiUrl}${content.profileImage.url}`}
                   alt=""
                   className="h-16 w-16 rounded-full aspect-square object-cover"
                   srcSet={`
-                  ${apiUrl}/${content.profileImage.formats?.thumbnail?.url} 96w,
-                  ${apiUrl}/${content.profileImage.formats?.small?.url} 309w,
-                  ${apiUrl}/${content.profileImage.formats?.medium?.url} 463w,
-                  ${apiUrl}/${content.profileImage.formats?.large?.url} 618w
+                  ${apiUrl}${content.profileImage.formats?.thumbnail?.url} 96w,
+                  ${apiUrl}${content.profileImage.formats?.small?.url} 309w,
+                  ${apiUrl}${content.profileImage.formats?.medium?.url} 463w,
+                  ${apiUrl}${content.profileImage.formats?.large?.url} 618w
                 `}
                   sizes="(max-width: 3rem) 5rem, 3rem"
                 />
@@ -114,11 +114,12 @@ const Home = () => {
           className="max-w-full xl:max-w-3xl 2xl:max-w-4xl mx-auto xl:h-screen xl:overflow-y-auto sm:pr-3 xl:pb-32
   [&::-webkit-scrollbar]:w-2
   [&::-webkit-scrollbar-track]:rounded-full
-  [&::-webkit-scrollbar-track]:bg-[#4454fe]
+  [&::-webkit-scrollbar-track]:bg-transparent
   [&::-webkit-scrollbar-thumb]:rounded-full
-  [&::-webkit-scrollbar-thumb]:bg-[#4454fe]
-  dark:[&::-webkit-scrollbar-track]:bg-neutral-700
-  dark:[&::-webkit-scrollbar-thumb]:bg-[#4454fe]"
+  [&::-webkit-scrollbar-thumb]:bg-slate-500
+  dark:[&::-webkit-scrollbar-track]:bg-slate-200
+  dark:[&::-webkit-scrollbar-thumb]:bg-slate-300
+  [&::-webkit-scrollbar-track]:bg-white" // Add this line
         >
           <Projects />
           {/* <SampleSwiper /> */}
