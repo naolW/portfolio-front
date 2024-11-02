@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #141520;
+  background: #fffdf8;
 }
 
 code {
@@ -108,7 +108,7 @@ body * {
 .card {
   /* background: linear-gradient(#212121, #212121) padding-box,
     linear-gradient(145deg, transparent 35%, #4454fe, #252e31) border-box; */
-  background: linear-gradient(#212121, #212121) padding-box,
+  background: linear-gradient(#fffdf8, #fffdf8) padding-box,
     linear-gradient(260deg, transparent 35%, #ff6f4c, #4454fe) border-box;
 }
 

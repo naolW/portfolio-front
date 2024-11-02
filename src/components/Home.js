@@ -28,7 +28,7 @@ const Home = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        `${apiUrl}/api/global?populate=socialAddress.icon&populate=stacks`
+        `${apiUrl}/api/global?populate=socialAddress.icon&populate=stacks&populate=profileImage`
       );
       if (!response.ok) {
         throw new Error(`Error fetching data: ${response.statusText}`);
@@ -43,14 +43,35 @@ const Home = () => {
 
   return (
     <section className="px-5 xl:px-10 2xl:px-0">
-      <div className="hero xl:fixed w-full xl:left-1/2 transform xl:-translate-x-1/2 flex flex-col xl:flex-row max-w-[1440px] justify-between text-white gap-8 mx-auto py-2 md:py-5 h-full pr-2">
+      <div className="hero xl:fixed w-full xl:left-1/2 transform xl:-translate-x-1/2 flex flex-col xl:flex-row max-w-[1440px] justify-between text-darkBlue1 gap-8 mx-auto py-2 md:py-5 h-full pr-2">
         <div className="left relative flex flex-col gap-1 items-start flex-1 text-left h-screen overflow-hidden md:px-5 2xl:px-0">
           <div className="content sticky top-0">
-            <h1 className="text-3xl md:text-5xl font-medium">
-              {content.siteName}
-            </h1>
-            <p className="text-base md:text-lg md:leading-5 mt-2">
-              {content.siteDescription}
+            <div className="flex items-center gap-2">
+              {content.profileImage && (
+                <img
+                  src={`${apiUrl}/${content.profileImage.url}`}
+                  alt=""
+                  className="h-16 w-16 rounded-full aspect-square object-cover"
+                  srcSet={`
+                  ${apiUrl}/${content.profileImage.formats?.thumbnail?.url} 96w,
+                  ${apiUrl}/${content.profileImage.formats?.small?.url} 309w,
+                  ${apiUrl}/${content.profileImage.formats?.medium?.url} 463w,
+                  ${apiUrl}/${content.profileImage.formats?.large?.url} 618w
+                `}
+                  sizes="(max-width: 3rem) 5rem, 3rem"
+                />
+              )}
+              <span>
+                <h1 className="text-3xl md:text-5xl md:leading-10 font-medium">
+                  {content.fullName}
+                </h1>
+                <p className="text-xl font-medium leading-none">
+                  {content.jobDescription}
+                </p>
+              </span>
+            </div>
+            <p className="text-base font-normal md:leading-5 mt-3">
+              {content.shortDescription}
             </p>
             <div className="icon flex gap-1.5 items-center mt-2 justify-between w-fit">
               {content.socialAddress?.map(({ icon, url }, index) => (
